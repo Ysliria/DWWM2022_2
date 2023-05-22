@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/a-propos', name: 'home_about', methods: ['GET'])]
-    public function about()
+    public function about(): Response
     {
         return $this->render('home/about.html.twig');
     }
