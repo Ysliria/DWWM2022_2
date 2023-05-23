@@ -3,43 +3,20 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue !</h1>
+    <h1 class="text-dark">CEFIM<small class="text-muted"> tout il est bien, tout il est beau, tout il est bon</small>
+    </h1>
 
-    <hr>
+    <hr class="text-dark" style="opacity: unset;">
 
-    <section class="row">
-        <h2>Lorem</h2>
+    {% include 'partials/_carousel.html.twig' %}
 
-        <article>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, asperiores atque consectetur cumque dolorum ducimus est eveniet id incidunt inventore ipsa natus nesciunt officia qui quo rem repellat saepe sunt?
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, asperiores atque consectetur cumque dolorum ducimus est eveniet id incidunt inventore ipsa natus nesciunt officia qui quo rem repellat saepe sunt?
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, asperiores atque consectetur cumque dolorum ducimus est eveniet id incidunt inventore ipsa natus nesciunt officia qui quo rem repellat saepe sunt?
-            </p>
-        </article>
+    <section class="row mt-5">
+        <h2 class="mb-3">Nos prochaines formations</h2>
+
+        {% for formation in formations %}
+            <div class="col-4">
+                {% include 'partials/_card_formation.html.twig' with {formation} %}
+            </div>
+        {% endfor %}
     </section>
-
-    <hr>
-
-    <section class="row">
-        <h2>Lorem</h2>
-
-        <article>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, asperiores atque consectetur cumque dolorum ducimus est eveniet id incidunt inventore ipsa natus nesciunt officia qui quo rem repellat saepe sunt?
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, asperiores atque consectetur cumque dolorum ducimus est eveniet id incidunt inventore ipsa natus nesciunt officia qui quo rem repellat saepe sunt?
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, asperiores atque consectetur cumque dolorum ducimus est eveniet id incidunt inventore ipsa natus nesciunt officia qui quo rem repellat saepe sunt?
-            </p>
-        </article>
-    </section>
-
-    <hr>
 {% endblock %}
