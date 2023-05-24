@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ formation.nom }}{% endblock %}
+
+{% block body %}
+    <h1 class="text-dark">{{ formation.nom }}</h1>
+
+    <hr class="text-dark" style="opacity: unset;">
+
+    <section class="row">
+        <img src="https://picsum.photos/id/{{ formation.id }}/300/200" alt="illustration" class="col-4">
+
+        <div class="col-8">
+            <dl class="row">
+                <dt class="col-4">Code de la formation</dt>
+                <dd class="col-8">{{ formation.code }}</dd>
+
+                <dt class="col-4">Lieu de la formation</dt>
+                <dd class="col-8">{{ formation.ville }}</dd>
+
+                <dt class="col-4">Date de début de la formation</dt>
+                <dd class="col-8">{{ formation.startedAt|date('d/m/Y') }}</dd>
+
+                <dt class="col-4">Date de fin de la formation</dt>
+                <dd class="col-8">{{ formation.finishedAt|date('d/m/Y') }}</dd>
+
+                <dt class="col-4">Référent de la formation</dt>
+                <dd class="col-8">Todo : entité User</dd>
+            </dl>
+        </div>
+    </section>
+{% endblock %}
+

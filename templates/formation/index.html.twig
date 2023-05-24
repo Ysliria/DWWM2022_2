@@ -3,12 +3,17 @@
 {% block title %}Nos formations{% endblock %}
 
 {% block body %}
-    <h1>Nos formations</h1>
+    <h1 class="text-dark">Nos formations</h1>
 
     <hr class="text-dark" style="opacity: unset;">
 
+
+    <a href="{{ path('formation_add') }}" class="btn btn-primary mb-3 offset-10 col-2">
+        <i class="fa fa-plus"></i> Ajouter
+    </a>
+
     <section class="row">
-        {% for formation in formations %}
+        {% for formation in formations|sort((a,b) => b.startedAt <=> a.startedAt) %}
             <div class="col-4">
                 {% include 'partials/_card_formation.html.twig' with {formation} %}
             </div>
