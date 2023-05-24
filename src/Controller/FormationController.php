@@ -21,7 +21,7 @@ class FormationController extends AbstractController
         ]);
     }
 
-    #[Route('/{formation}/detail', name: 'show')]
+    #[Route('/{formation}/detail', name: 'show', methods: ['GET'])]
     public function show(Formation $formation)
     {
         return $this->render('formation/show.html.twig', [

@@ -8,7 +8,11 @@
     <hr class="text-dark" style="opacity: unset;">
 
     <section>
-        <p class="alert alert-warning">Mettre un formulaire ici !</p>
+        {{ form_start(contact_form) }}
+            {{ form_widget(contact_form) }}
+
+            <button class="btn btn-primary col-2 offset-10">Envoyer</button>
+        {{ form_end(contact_form) }}
     </section>
 {% endblock %}
 

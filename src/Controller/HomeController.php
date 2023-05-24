@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\ContactType;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,9 +25,19 @@ class HomeController extends AbstractController
         return $this->render('home/about.html.twig');
     }
 
-    #[Route('/contact', name: 'home_contact')]
-    public function contact(): Response
+    #[Route('/contact', name: 'home_contact', methods: ['POST', 'GET'])]
+    public function contact(Request $request): Response
     {
-        return $this->render('home/contact.html.twig');
+        $contactForm = $this->createForm(ContactType::class);
+        $contactForm->handleRequest($request);
+
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            // on envoie un mail
+            return $this->redirectToRoute('home_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('home/contact.html.twig', [
+            'contact_form' => $contactForm
+        ]);
     }
 }
