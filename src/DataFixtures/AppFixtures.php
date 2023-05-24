@@ -3,16 +3,14 @@
 namespace App\DataFixtures;
 
 use App\Entity\Formation;
+use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-
 use Faker\Factory;
-
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service_locator;
 
 class AppFixtures extends Fixture
 {
-    const FORMATION = [
+    public const FORMATION = [
         'DWWM' => 'Développeur Web et Web Mobile',
         'CDA'  => 'Concepteur Développeur d\'Application',
         'CDUI' => 'Concepteur Designer UI',
@@ -31,14 +29,13 @@ class AppFixtures extends Fixture
             $formation
                 ->setNom(self::FORMATION[$code])
                 ->setCode($code)
-                ->setStartedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 week', '+1 month')))
+                ->setStartedAt(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 week', '+1 month')))
                 ->setFinishedAt(
-                    \DateTimeImmutable::createFromMutable(
+                    DateTimeImmutable::createFromMutable(
                         $faker->dateTimeBetween($formation->getStartedAt()?->format('Y-m-d'), '+1 year')
                     )
                 )
-                ->setVille($faker->randomElement(['TOURS', 'ORLEANS']))
-            ;
+                ->setVille($faker->randomElement(['TOURS', 'ORLEANS']));
 
             $manager->persist($formation);
         }
