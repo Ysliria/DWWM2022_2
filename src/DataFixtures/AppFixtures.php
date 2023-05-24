@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
                 ->setStartedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-1 week', '+1 month')))
                 ->setFinishedAt(
                     \DateTimeImmutable::createFromMutable(
-                        $faker->dateTimeBetween($formation->getStartedAt()->format('Y-m-d'), '+1 year')
+                        $faker->dateTimeBetween($formation->getStartedAt()?->format('Y-m-d'), '+1 year')
                     )
                 )
                 ->setVille($faker->randomElement(['TOURS', 'ORLEANS']))
