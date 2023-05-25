@@ -31,19 +31,21 @@ class FormationType extends AbstractType
                 'label'  => 'Date de début de la formation',
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
+                'required' => false
             ])
             ->add('finishedAt', DateType::class, [
                 'label'  => 'Date de fin de la formation',
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
-                'help'   => 'La date de fin doit être postérieur à la date de début !'
+                'required' => false
             ])
             ->add('ville', ChoiceType::class, [
                 'label'   => 'Lieu de la formation',
                 'choices' => [
                     'TOURS'   => 'TOURS',
                     'ORLEANS' => 'ORLEANS'
-                ]
+                ],
+                'required' => false
             ]);
     }
 
