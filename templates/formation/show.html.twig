@@ -29,10 +29,10 @@
                 <dd class="col-8">{{ formation.ville }}</dd>
 
                 <dt class="col-4">Date de début de la formation</dt>
-                <dd class="col-8">{{ formation.startedAt|date('d/m/Y') }}</dd>
+                <dd class="col-8">{{ formation.startedAt is empty ? "" : formation.startedAt|date('d/m/Y') }}</dd>
 
                 <dt class="col-4">Date de fin de la formation</dt>
-                <dd class="col-8">{{ formation.finishedAt|date('d/m/Y') }}</dd>
+                <dd class="col-8">{{ formation.finishedAt is empty ? "" : formation.finishedAt|date('d/m/Y') }}</dd>
 
                 <dt class="col-4">Référent de la formation</dt>
                 <dd class="col-8">Todo : entité User</dd>

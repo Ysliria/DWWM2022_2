@@ -18,6 +18,6 @@
     </div>
 
     <div class="card-footer text-muted">
-        Débute le : {{ formation.startedAt|date('d/m/Y') }}
+        Débute le : {{ formation.startedAt is empty ? "" : formation.startedAt|date('d/m/Y') }}
     </div>
 </div>
