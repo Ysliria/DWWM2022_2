@@ -7,9 +7,13 @@
 
     <hr class="text-dark" style="opacity: unset;">
 
-    <a href="{{ path('formation_update', {'formation': formation.id}) }}" class="btn btn-primary mb-3 offset-10 col-2">
-        <i class="fa fa-pencil"></i> Modifier
-    </a>
+    <div class="d-flex flex-row-reverse">
+        <a href="{{ path('formation_update', {'formation': formation.id}) }}" class="btn btn-warning">
+            <i class="fa fa-pencil"></i> Modifier
+        </a>
+
+        {% include 'formation/_delete_form.html.twig' %}
+    </div>
 
     <section class="row">
         <img src="https://picsum.photos/id/{{ formation.id }}/300/200" alt="illustration" class="col-4">
