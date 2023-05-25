@@ -40,6 +40,8 @@ class FormationController extends AbstractController
         if ($formationAdd->isSubmitted() && $formationAdd->isValid()) {
             $formationRepository->save($formation, true);
 
+            $this->addFlash('success', 'La formation " ' . $formation->getNom() . ' " a bien été créée !');
+
             return $this->redirectToRoute(
                 'formation_show',
                 ['formation' => $formation->getId()],
@@ -61,6 +63,8 @@ class FormationController extends AbstractController
         if ($formationUpdate->isSubmitted() && $formationUpdate->isValid()) {
             $formationRepository->save($formation, true);
 
+            $this->addFlash('success', 'La formation " ' . $formation->getNom() . ' " a bien été mise à jour !');
+
             return $this->redirectToRoute(
                 'formation_show',
                 ['formation' => $formation->getId()],
@@ -79,7 +83,12 @@ class FormationController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$formation->getId(), $request->request->get('_token'))) {
             $formationRepository->remove($formation, true);
+
+            $this->addFlash('success', 'La formation " ' . $formation->getNom() . ' " a bien été supprimée !');
+        } else {
+            $this->addFlash('warning', 'Une erreur est survenue !');
         }
+
 
         return $this->redirectToRoute('formation_index');
     }
