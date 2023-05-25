@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mise à jour{% endblock %}
+
+{% block body %}
+    <h1 class="text-dark">Mise à jour</h1>
+
+    <hr class="text-dark" style="opacity: unset;">
+
+    {% include 'formation/_formation_form.html.twig' with {'button_label': 'Modifier'} %}
+{% endblock %}
+

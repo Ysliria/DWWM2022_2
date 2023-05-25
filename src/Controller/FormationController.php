@@ -48,7 +48,29 @@ class FormationController extends AbstractController
         }
 
         return $this->render('formation/add.html.twig', [
-            'formation_add' => $formationAdd
+            'formation_form' => $formationAdd
+        ]);
+    }
+
+    #[Route('/{formation}/modifier', name: 'update', methods: ['POST', 'GET'])]
+    public function update(Formation $formation, Request $request, FormationRepository $formationRepository): Response
+    {
+        $formationUpdate = $this->createForm(FormationType::class, $formation);
+        $formationUpdate->handleRequest($request);
+
+        if ($formationUpdate->isSubmitted() && $formationUpdate->isValid()) {
+            $formationRepository->save($formation, true);
+
+            return $this->redirectToRoute(
+                'formation_show',
+                ['formation' => $formation->getId()],
+                Response::HTTP_SEE_OTHER
+            );
+        }
+
+        return $this->render('formation/update.html.twig', [
+            'formation_form' => $formationUpdate,
+
         ]);
     }
 }

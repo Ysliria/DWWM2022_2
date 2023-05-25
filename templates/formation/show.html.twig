@@ -7,6 +7,10 @@
 
     <hr class="text-dark" style="opacity: unset;">
 
+    <a href="{{ path('formation_update', {'formation': formation.id}) }}" class="btn btn-primary mb-3 offset-10 col-2">
+        <i class="fa fa-pencil"></i> Modifier
+    </a>
+
     <section class="row">
         <img src="https://picsum.photos/id/{{ formation.id }}/300/200" alt="illustration" class="col-4">
 
