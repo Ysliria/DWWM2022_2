@@ -25,9 +25,6 @@ class RegisterController extends AbstractController
         $registerForm->handleRequest($request);
 
         if ($registerForm->isSubmitted() && $registerForm->isValid()) {
-            // $pwd     = $user->getPassword();
-            // $hashPwd = $userPasswordHasher->hashPassword($user, $pwd);
-            // $user->setPassword($hashPwd);
             $user->setPassword($userPasswordHasher->hashPassword($user, $user->getPassword()));
             $userRepository->save($user, true);
 
