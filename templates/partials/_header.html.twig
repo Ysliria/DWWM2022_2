@@ -20,7 +20,13 @@
 
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('formation_index')}}">Formations</a>
+                            <a class="nav-link {% if route_name starts with 'formation_' %}active{% endif %}" href="{{ path('formation_index')}}">Formations</a>
+                        </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if route_name starts with 'filiere_' %}active{% endif %}" href="{{ path('filiere_index')}}">Filières</a>
                         </li>
                     {% endif %}
 
