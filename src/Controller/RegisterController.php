@@ -25,7 +25,9 @@ class RegisterController extends AbstractController
         $registerForm->handleRequest($request);
 
         if ($registerForm->isSubmitted() && $registerForm->isValid()) {
-            $user->setPassword($userPasswordHasher->hashPassword($user, $user->getPassword()));
+//            Plus nécessaire si on hash le mot de passe dans le UserType
+//            $user->setPassword($userPasswordHasher->hashPassword($user, $user->getPassword()));
+
             $userRepository->save($user, true);
 
             $this->addFlash('success', 'Votre compte a bien été créé !');
