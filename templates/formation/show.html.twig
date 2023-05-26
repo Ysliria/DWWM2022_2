@@ -8,11 +8,13 @@
     <hr class="text-dark" style="opacity: unset;">
 
     <div class="mb-3 row">
-        <div class="col-2">
-            <a href="{{ path('formation_update', {'formation': formation.id}) }}" class="btn btn-warning">
-                <i class="fa fa-pencil"></i> Modifier
-            </a>
-        </div>
+        {% if is_granted('ROLE_REFERENT') %}
+            <div class="col-2">
+                <a href="{{ path('formation_update', {'formation': formation.id}) }}" class="btn btn-warning">
+                    <i class="fa fa-pencil"></i> Modifier
+                </a>
+            </div>
+        {% endif %}
 
         {% if is_granted('ROLE_ADMIN') %}
             {% include 'formation/_delete_form.html.twig' %}

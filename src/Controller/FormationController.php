@@ -15,6 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class FormationController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET'])]
+    #[IsGranted('ROLE_FORMATEUR')]
     public function index(FormationRepository $formationRepository): Response
     {
         return $this->render('formation/index.html.twig', [
@@ -23,6 +24,7 @@ class FormationController extends AbstractController
     }
 
     #[Route('/{formation}/detail', name: 'show', methods: ['GET'])]
+    #[IsGranted('ROLE_FORMATEUR')]
     public function show(Formation $formation): Response
     {
         return $this->render('formation/show.html.twig', [
@@ -31,6 +33,7 @@ class FormationController extends AbstractController
     }
 
     #[Route('/ajouter', name: 'add', methods: ['POST', 'GET'])]
+    #[IsGranted('ROLE_REFERENT')]
     public function add(Request $request, FormationRepository $formationRepository): Response
     {
         $formation    = new Formation();
@@ -56,6 +59,7 @@ class FormationController extends AbstractController
     }
 
     #[Route('/{formation}/modifier', name: 'update', methods: ['POST', 'GET'])]
+    #[IsGranted('ROLE_REFERENT')]
     public function update(Formation $formation, Request $request, FormationRepository $formationRepository): Response
     {
         $formationUpdate = $this->createForm(FormationType::class, $formation);
