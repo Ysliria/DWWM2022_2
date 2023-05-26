@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Formation;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -28,24 +30,30 @@ class FormationType extends AbstractType
                 ]
             ])
             ->add('startedAt', DateType::class, [
-                'label'  => 'Date de début de la formation',
-                'widget' => 'single_text',
-                'input'  => 'datetime_immutable',
+                'label'    => 'Date de début de la formation',
+                'widget'   => 'single_text',
+                'input'    => 'datetime_immutable',
                 'required' => false
             ])
             ->add('finishedAt', DateType::class, [
-                'label'  => 'Date de fin de la formation',
-                'widget' => 'single_text',
-                'input'  => 'datetime_immutable',
+                'label'    => 'Date de fin de la formation',
+                'widget'   => 'single_text',
+                'input'    => 'datetime_immutable',
                 'required' => false
             ])
             ->add('ville', ChoiceType::class, [
-                'label'   => 'Lieu de la formation',
-                'choices' => [
+                'label'    => 'Lieu de la formation',
+                'choices'  => [
                     'TOURS'   => 'TOURS',
                     'ORLEANS' => 'ORLEANS'
                 ],
                 'required' => false
+            ])
+            ->add('referent', EntityType::class, [
+                'label'        => 'Référent de la formation',
+                'required'     => false,
+                'class'        => User::class,
+                'choice_label' => 'lastname'
             ]);
     }
 

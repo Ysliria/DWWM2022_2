@@ -14,7 +14,9 @@
             </a>
         </div>
 
-        {% include 'formation/_delete_form.html.twig' %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {% include 'formation/_delete_form.html.twig' %}
+        {% endif %}
     </div>
 
     <section class="row">
@@ -35,7 +37,11 @@
                 <dd class="col-8">{{ formation.finishedAt is empty ? "" : formation.finishedAt|date('d/m/Y') }}</dd>
 
                 <dt class="col-4">Référent de la formation</dt>
-                <dd class="col-8">Todo : entité User</dd>
+                {% if formation.referent %}
+                    <dd class="col-8">{{ formation.referent.lastname }} {{ formation.referent.firstname }}</dd>
+                {% else %}
+                    <dd class="col-8">Désignation à venir</dd>
+                {% endif %}
             </dl>
         </div>
     </section>
