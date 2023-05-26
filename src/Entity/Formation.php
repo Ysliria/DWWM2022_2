@@ -71,7 +71,7 @@ class Formation
 
     public function setNom(string $nom): self
     {
-        $this->nom = $nom;
+        $this->nom = ucwords($nom);
 
         return $this;
     }
@@ -83,7 +83,7 @@ class Formation
 
     public function setCode(string $code): self
     {
-        $this->code = $code;
+        $this->code = strtoupper($code);
 
         return $this;
     }
