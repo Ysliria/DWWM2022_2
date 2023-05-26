@@ -30,12 +30,12 @@ class UserType extends AbstractType
                 'invalid_message' => 'Le mot de passe et sa confirmation ne correspondent pas !',
                 'first_options'   => [
                     'label' => 'Votre mot de passe',
-                    'hash_property_path' => 'password' // Permet de forcer le hash directement
+                    'hash_property_path' => 'password'
                 ],
                 'second_options'  => [
                     'label' => 'Confirmez votre mot de passe'
                 ],
-                'mapped' => false // obligatoire avec hash_property_path @see https://symfony.com/doc/current/reference/forms/types/password.html#hash-property-path
+                'mapped' => false
             ])
             ->add('phone', TextType::class, [
                 'label'    => 'Votre numéro de téléphone',

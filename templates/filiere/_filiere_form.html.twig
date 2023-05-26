@@ -1,0 +1,8 @@
+{{ form_start(filiere_form) }}
+    {{ form_widget(filiere_form) }}
+
+<div class="d-flex">
+    <a href="{{ path('filiere_index') }}" class="btn btn-secondary col-2">Annuler</a>
+    <button class="btn btn-primary col-2 offset-8">{{ button_label|default('Ajouter') }}</button>
+</div>
+{{ form_end(filiere_form) }}

@@ -3,8 +3,6 @@
 
     <div class="d-flex">
         <a href="{{ path('formation_index') }}" class="btn btn-secondary col-2">Annuler</a>
-        {#            <button class="btn btn-primary col-2 offset-8">Créer</button>#}
-        {#            Modification du bouton pour rendre le label dynamique et permettre la réutilisation ultérieure du formulaire#}
         <button class="btn btn-primary col-2 offset-8">{{ button_label|default('Ajouter') }}</button>
     </div>
 {{ form_end(formation_form) }}

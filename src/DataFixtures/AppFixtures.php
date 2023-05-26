@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Filiere;
 use App\Entity\Formation;
 use App\Entity\User;
 use DateTimeImmutable;
@@ -60,6 +61,20 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+        // Création des filières
+        $filiereDev = new Filiere();
+        $filiereDev->setName('WEB & DÉVELOPPEMENT');
+        $manager->persist($filiereDev);
+
+        $filiereInfra = new Filiere();
+        $filiereInfra->setName('INFRASTRUCTURES & CYBERSÉCURITÉ');
+        $manager->persist($filiereInfra);
+
+        $filiereMark = new Filiere();
+        $filiereMark->setName('WEBMARKETING & DATA');
+        $manager->persist($filiereMark);
+
+        // Création des formations
         for ($i = 0; $i < 10; $i++) {
             $code      = array_rand(self::FORMATION);
             $formation = new Formation();

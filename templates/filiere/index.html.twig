@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des filières{% endblock %}
+
+{% block body %}
+    <h1 class="text-dark">Liste des filières de formation</h1>
+
+    <hr class="text-dark" style="opacity: unset;">
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('filiere_add') }}" class="btn btn-primary mb-3 offset-10 col-2">
+            <i class="fa fa-plus"></i> Ajouter
+        </a>
+    {% endif %}
+
+    <section>
+        <table class="table table-hover table-striped">
+            <caption>Liste des filières de formation</caption>
+            <thead class="table-dark">
+            <tr>
+                <th class="col-8">Nom de la filière</th>
+                <th class="col-4">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for filiere in filieres %}
+                <tr>
+                    <td>{{ filiere.name }}</td>
+                    <td>
+                        <a href="" class="btn btn-info"><i class="fa fa-magnifying-glass"></i> Détail</a>
+                        <a href="" class="btn btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
