@@ -28,9 +28,9 @@
                 <tr>
                     <td>{{ filiere.name }}</td>
                     <td>
-                        <a href="" class="btn btn-info"><i class="fa fa-magnifying-glass"></i> Détail</a>
-                        <a href="" class="btn btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-
+                        <a href="{{ path('filiere_show', {'filiere': filiere.id}) }}" class="btn btn-info"><i class="fa fa-magnifying-glass"></i> Détail</a>
+                        <a href="{{ path('filiere_update', {'filiere': filiere.id}) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
+                        {% include 'filiere/_delete_filiere.html.twig' %}
                     </td>
                 </tr>
             {% endfor %}
